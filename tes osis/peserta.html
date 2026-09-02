@@ -207,16 +207,15 @@
     <!-- ===== HALAMAN 3: HASIL ===== -->
     <section id="pageHasil" class="hidden">
       <div class="card" style="text-align:center;">
-        <div style="font-size:13px; color:var(--gray);">Tes selesai. Terima kasih, No. Peserta <b id="hasilNoPeserta">-</b>!</div>
-        <div class="hasil-nilai" id="hasilNilai">-</div>
-        <div class="hasil-detail">
-          <div><span id="hasilBenar" style="color:var(--green);">-</span><small>Benar</small></div>
-          <div><span id="hasilSalah" style="color:var(--red);">-</span><small>Salah</small></div>
-          <div><span id="hasilKosong" style="color:var(--gray);">-</span><small>Kosong</small></div>
+        <div style="font-size:40px; margin-bottom:8px;">&#10003;</div>
+        <div style="font-size:17px; font-weight:700; color:var(--navy);">Terima kasih!</div>
+        <div style="font-size:13.5px; color:var(--gray); margin-top:6px;">
+          Jawaban Anda (No. Peserta <b id="hasilNoPeserta">-</b>) sudah berhasil kami terima.
         </div>
         <p style="font-size:12.5px; color:#555; margin-top:16px;">
           Hasil telah tercatat. Pengumuman resmi akan disampaikan oleh panitia OSIS.
         </p>
+        <button id="btnKembaliAwal" class="btn btn-primary" style="margin-top:16px;">Kembali ke Halaman Awal</button>
       </div>
     </section>
 
@@ -229,7 +228,7 @@
 
 <script>
 /* ============ KONFIGURASI ============ */
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbyA-OLcgPbX7SOFYJSKFpstDTb8kPJ31ZyJGWI0NXYJbDpHIsRdeXkJKPp3J5OT73TrhA/exec'; // ganti dengan URL Web App hasil deploy (Code.gs)
+var GAS_URL = 'PASANG_URL_WEB_APP_GAS_DI_SINI'; // ganti dengan URL Web App hasil deploy (Code.gs)
 
 /* ============ STATE ============ */
 var state = {
@@ -512,11 +511,11 @@ function tampilkanHasil(hasil){
   el('bottomSubmit').classList.add('hidden');
   el('pageHasil').classList.remove('hidden');
   el('hasilNoPeserta').textContent = hasil.no_peserta || state.noPeserta || '-';
-  el('hasilNilai').textContent = hasil.nilai;
-  el('hasilBenar').textContent = hasil.jumlah_benar;
-  el('hasilSalah').textContent = hasil.jumlah_salah;
-  el('hasilKosong').textContent = hasil.jumlah_kosong;
 }
+
+el('btnKembaliAwal').addEventListener('click', function(){
+  window.location.reload();
+});
 </script>
 </body>
 </html>
